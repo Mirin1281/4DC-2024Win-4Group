@@ -8,6 +8,19 @@ namespace Mirin
     {
         [SerializeField] Collider2D col;
         [SerializeField] SpriteRenderer spriteRenderer;
+        [SerializeField] ScoreManager scoreManager;
+        [SerializeField] int score = 100000;
+
+        void OnMouseDown()
+        {
+            scoreManager.GetScore(score);
+            gameObject.SetActive(false);
+        }
+
+        public void SetScoreManager(ScoreManager sManager)
+        {
+            scoreManager = sManager;
+        }
 
         public void SetRotate(float deg)
         {

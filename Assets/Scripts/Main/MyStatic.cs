@@ -2,6 +2,8 @@ using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor; // AssetDatabaseを使うために必要
 #endif
+using Cysharp.Threading.Tasks;
+using System.Threading;
 
 namespace Mirin
 {
@@ -9,6 +11,9 @@ namespace Mirin
     {
         public static float Sin(float deg) => Mathf.Sin(deg * Mathf.Deg2Rad);
         public static float Cos(float deg) => Mathf.Cos(deg * Mathf.Deg2Rad);
+
+        public static UniTask WaitSeconds(float wait, CancellationToken token)
+            => UniTask.Delay(System.TimeSpan.FromSeconds(wait), cancellationToken: token);
 
         /// <summary>
         /// シーン内のコンポーネントを検索します
