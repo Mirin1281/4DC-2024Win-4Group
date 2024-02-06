@@ -20,8 +20,7 @@ namespace Mirin
 
         async UniTask BallMove(Ball ball, CancellationToken token)
         {
-            var randX = Random.Range(-7.5f, 7.5f);
-            await ball.LinearMoveAsync(new Vector2(randX, 7f), 270, 12f, token, 5f);
+            await ball.LinearMoveAsync(new Vector2(0, 6f), 270, 8, token, 5f);
             ball.gameObject.SetActive(false);
 
         }

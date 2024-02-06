@@ -1,12 +1,9 @@
 using UnityEngine;
 
-namespace Mirin
+public class ObjectWall : MonoBehaviour
 {
-    public class ObjectWall : MonoBehaviour
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        void OnTriggerEnter2D(Collider2D collision)
-        {
-            collision.gameObject.SetActive(false);
-        }
+        collision.gameObject.SetActive(false);
     }
 }

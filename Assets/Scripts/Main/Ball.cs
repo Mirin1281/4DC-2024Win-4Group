@@ -13,9 +13,8 @@ namespace Mirin
 
         void OnMouseDown()
         {
-            /*scoreManager.GetScore(score);
+            scoreManager.GetScore(score);
             gameObject.SetActive(false);
-            Debug.Log(0);*/
         }
 
         public void SetScoreManager(ScoreManager sManager)
@@ -46,11 +45,6 @@ namespace Mirin
         public void SetCollider(bool enable)
         {
             col.enabled = enable;
-        }
-
-        public void SetOrder(int order)
-        {
-            spriteRenderer.sortingOrder = order + 4;
         }
 
         public async UniTask LinearMoveAsync(
