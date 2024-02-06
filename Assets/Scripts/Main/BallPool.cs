@@ -14,6 +14,7 @@ namespace Mirin
             ball.SetSprite(typeData.GetObject(type));
             /*ball.SetCollider(true);
             ball.SetAlpha(1f);*/
+            ball.SetOrder(Random.Range(0, 10));
             ball.SetScoreManager(scoreManager);
             return ball;
         }
