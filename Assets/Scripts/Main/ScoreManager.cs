@@ -15,8 +15,7 @@ namespace Mirin
         public void GetScore(int s)
         {
             score += s;
+            OnScoreChanged?.Invoke(s);
         }
-
-        
     }
 }

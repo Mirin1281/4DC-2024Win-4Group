@@ -1,4 +1,6 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using System;
 
 namespace Mirin
 {
@@ -6,20 +8,45 @@ namespace Mirin
     {
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] Camera mainCamera;
-
-        void Start()
+        [SerializeField] FeverManager feverManager;
+        bool isLoop;
+        public bool IsLoop
         {
-            if(scoreManager == null)
+            get => isLoop;
+            set
             {
-                scoreManager = MyHelper.FindComponent<ScoreManager>();
-            }
-            if(mainCamera == null)
-            {
-                mainCamera = Camera.main;
+                isLoop = value;
+                if (value == true)
+                {
+                    LoopCheckAsync().Forget();
+                }
             }
         }
 
-        void Update()
+        int combo;
+
+        public void ResetComboCount()
+        {
+            combo = 0;
+            OnClicked?.Invoke(combo);
+        }
+
+        /// <summary>
+        /// à¯êîÇÕÉRÉìÉ{êî
+        /// </summary>
+        public event Action<int> OnClicked;
+
+        async UniTask LoopCheckAsync()
+        {
+            var token = this.GetCancellationTokenOnDestroy();
+            while(IsLoop)
+            {
+                CheckMouseDown();
+                await UniTask.Yield(token);
+            }
+        }
+
+        void CheckMouseDown()
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -36,7 +63,17 @@ namespace Mirin
                         ball.OnClicked();
                     }
                 }
-                Debug.Log(isHit ? "Ç≈Ç´ÇΩ" : "Ç≈Ç´ÇƒÇ»Ç¢");
+
+                if (feverManager.IsFeverMode) return;
+                if(isHit)
+                {
+                    combo++;
+                }
+                else
+                {
+                    combo = 0;
+                }
+                OnClicked?.Invoke(combo);
             }
         }
     }

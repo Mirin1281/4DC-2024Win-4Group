@@ -9,14 +9,19 @@ namespace Mirin
         [SerializeField] TutorialCanvas tutorialCanvas;
         [SerializeField] Timer timer;
         [SerializeField] BallCreator ballCreator;
+        [SerializeField] MouseInput mouseInput;
 
         async UniTask Start()
         {
             var token = this.GetCancellationTokenOnDestroy();
             await tutorialCanvas.ShowTutorial();
-            ballCreator.LoopCreateAsync().Forget();
+            ballCreator.IsLoop = true;
             timer.AddTime = true;
+            mouseInput.IsLoop = true;
             await WaitTimeAsync(timer, MyHelper.GameTime, token);
+            ballCreator.IsLoop = false;
+            timer.AddTime = false;
+            mouseInput.IsLoop = false;
         }
 
         async UniTask WaitTimeAsync(Timer timer, float time, CancellationToken token)

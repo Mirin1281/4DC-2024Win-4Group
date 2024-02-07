@@ -6,6 +6,7 @@ namespace Mirin
     {
         [InspectorName("Ç»Çµ")] None,
         [InspectorName("ê¬1")] Blue1,
+        [InspectorName("ê‘1")] Red1,
     }
 
     [CreateAssetMenu(

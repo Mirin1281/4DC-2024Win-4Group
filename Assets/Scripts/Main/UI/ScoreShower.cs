@@ -13,9 +13,9 @@ namespace Mirin
             scoreManager.OnScoreChanged += UpdateText;
         }
 
-        void UpdateText(int score)
+        void UpdateText(int getScore)
         {
-            tmpro.SetText($"Score: {score:0000000}");
+            tmpro.SetText($"Score: {scoreManager.Score:0000000}");
         }
     }
 }
