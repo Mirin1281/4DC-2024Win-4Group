@@ -10,7 +10,7 @@ namespace Mirin
     public static class MyHelper
     {
         public const float GameTime = 10f;
-        public const int FeverCount = 10;
+        public const int FeverCount = 3;
 
         public static float Sin(float deg) => Mathf.Sin(deg * Mathf.Deg2Rad);
         public static float Cos(float deg) => Mathf.Cos(deg * Mathf.Deg2Rad);

@@ -11,6 +11,9 @@ namespace Mirin
         [InspectorName("空振り")] EmptyClick,
         [InspectorName("確定")] Pati,
         [InspectorName("終了ホイッスル")] Finish,
+        [InspectorName("玉破壊音(フィーバー)")] FeverBallClick,
+        [InspectorName("玉破壊音(フィーバー)2")] FeverBallClick2,
+        [InspectorName("玉破壊音2")] BallClick2,
     }
 
     [CreateAssetMenu(

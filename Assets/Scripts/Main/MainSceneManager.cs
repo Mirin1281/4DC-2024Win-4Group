@@ -1,7 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using KanKikuchi.AudioManager;
 
 namespace Mirin
@@ -29,8 +27,7 @@ namespace Mirin
             ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsLoop = true;
-            var token = this.GetCancellationTokenOnDestroy();
-            await WaitTimeAsync(timer, MyHelper.GameTime, token);
+            await WaitTimeAsync(timer, MyHelper.GameTime);
 
             finishCanvas.gameObject.SetActive(true);
             SEManager.Instance.PlaySE(SEType.Finish);
@@ -42,10 +39,9 @@ namespace Mirin
             FadeLoadSceneManager.Instance.LoadScene(0.5f, "Result");
         }
 
-        async UniTask WaitTimeAsync(Timer timer, float time, CancellationToken token)
+        async UniTask WaitTimeAsync(Timer timer, float time)
         {
-            await UniTask.WaitUntil(() =>
-                timer.CurrentTime > time, cancellationToken: token);
+            await UniTask.WaitUntil(() => timer.CurrentTime > time);
         }
     }
 }

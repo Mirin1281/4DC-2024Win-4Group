@@ -37,21 +37,23 @@ namespace Mirin
             IsFeverMode = true;
             mouseInput.IsEnabled = false;
             timer.AddTime = false;
-            SEManager.Instance.PlaySE(SEType.Pati);
-            Time.timeScale = 0f;
-            feverCanvas.ShowCanvas().Forget();
-            await UniTask.Delay(4000, true);
+
             if(firstFever)
             {
-                BGMManager.Instance.Play(BGMPath.KISEION_01, allowsDuplicate: true);
+                BGMManager.Instance.Play(
+                    BGMPath.KISEION_01, volumeRate: 0.6f, allowsDuplicate: true);
                 firstFever = false;
             }
             else
             {
                 BGMManager.Instance.UnPause(BGMPath.KISEION_01);
-                var audioSources = BGMManager.Instance.GetComponents<AudioSource>();
-                audioSources[1].time -= 2f;
             }
+            var audioSources = BGMManager.Instance.GetComponents<AudioSource>();
+            audioSources[1].time = 30.6f;
+
+            Time.timeScale = 0f;
+            feverCanvas.ShowCanvas().Forget();
+            await UniTask.Delay(4000, true);
             
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
