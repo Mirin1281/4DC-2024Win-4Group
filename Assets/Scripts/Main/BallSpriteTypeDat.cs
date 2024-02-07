@@ -30,7 +30,7 @@ namespace Mirin
         [InspectorName("アウト1")] Out1,
         [InspectorName("アウト2")] Out2,
         [InspectorName("アウト3")] Out3,
-        [InspectorName("予備3")] _Space3,
+        [InspectorName("ガチアウト")] Out4,
         [InspectorName("予備4")] _Space4,
     }
 }

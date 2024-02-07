@@ -14,13 +14,14 @@ namespace Mirin
             var score = type switch
             {
                 BallSpriteType.None => 0,
-                BallSpriteType.Blue1 => 1000,
+                BallSpriteType.Blue1 => 400,
                 BallSpriteType.Purple1 => 2000,
-                BallSpriteType.Red1 => 3000,
-                BallSpriteType.Yellow1 => 5000,
-                BallSpriteType.Out1 => 3000,
-                BallSpriteType.Out2 => 7000,
+                BallSpriteType.Red1 => 5000,
+                BallSpriteType.Yellow1 => 10000,
+                BallSpriteType.Out1 => 1000,
+                BallSpriteType.Out2 => 5000,
                 BallSpriteType.Out3 => 10000,
+                BallSpriteType.Out4 => 50000,
                 _ => throw new System.Exception()
             };
             ball.SetScore(score);
