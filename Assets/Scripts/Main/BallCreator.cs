@@ -72,7 +72,7 @@ namespace Mirin
             var randX = Random.Range(-7.5f, 7.5f);
             var randSpeed = Random.Range(2f, 6f);
             var randRotate = Random.Range(-500f, 500f);
-            var randMoveX = Random.Range(-0.3f, 0.3f);
+            var randMoveX = Random.Range(-0.5f, 0.5f);
             float t = 0f;
             while(t < 5f && ball.gameObject.activeInHierarchy)
             {
@@ -89,7 +89,7 @@ namespace Mirin
             var randX = Random.Range(-7.5f, 7.5f);
             var randSpeed = Random.Range(4f, 10f);
             var randRotate = Random.Range(-500f, 500f);
-            var randMoveX = Random.Range(-0.3f, 0.3f);
+            var randMoveX = Random.Range(-0.5f, 0.5f);
             float t = 0f;
             while (t < 5f && ball.gameObject.activeInHierarchy)
             {

@@ -10,7 +10,6 @@ namespace Mirin
         [SerializeField] MouseInput mouseInput;
         [SerializeField] Timer timer;
         [SerializeField] float feverTime = 8f;
-        [SerializeField] Image fillImage;
         [SerializeField] BallCreator ballCreator;
         [SerializeField] FeverCanvas feverCanvas;
         [SerializeField] ComboSlider comboSlider;

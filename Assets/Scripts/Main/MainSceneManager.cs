@@ -16,10 +16,10 @@ namespace Mirin
 
         async UniTask Start()
         {
-            if(GamaManager.Instance.IsFirstWatchTutorial)
+            if(GameManager.Instance.IsFirstWatchTutorial)
             {
                 await tutorialCanvas.ShowTutorial();
-                GamaManager.Instance.IsFirstWatchTutorial = false;
+                GameManager.Instance.IsFirstWatchTutorial = false;
             }
             await readyCanvas.ShowReady();
 
@@ -27,21 +27,16 @@ namespace Mirin
             ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsLoop = true;
-            await WaitTimeAsync(timer, MyHelper.GameTime);
+            await UniTask.WaitUntil(() => timer.CurrentTime > MyHelper.GameTime);
 
             finishCanvas.gameObject.SetActive(true);
             SEManager.Instance.PlaySE(SEType.Finish);
             ballCreator.IsLoop = false;
             timer.AddTime = false;
             mouseInput.IsLoop = false;
-            GamaManager.Instance.Score = scoreManager.Score;
+            GameManager.Instance.Score = scoreManager.Score;
             await MyHelper.WaitSeconds(2f, default);
             FadeLoadSceneManager.Instance.LoadScene(0.5f, "Result");
-        }
-
-        async UniTask WaitTimeAsync(Timer timer, float time)
-        {
-            await UniTask.WaitUntil(() => timer.CurrentTime > time);
         }
     }
 }

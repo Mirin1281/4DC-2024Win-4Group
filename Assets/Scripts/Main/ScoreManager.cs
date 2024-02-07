@@ -8,7 +8,6 @@ namespace Mirin
     {
         [SerializeField] int score;
         public int Score => score;
-        [SerializeField] TMP_Text tmpro;
 
         public event Action<int> OnScoreChanged;
 

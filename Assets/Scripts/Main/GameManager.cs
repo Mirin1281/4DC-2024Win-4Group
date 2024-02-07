@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Mirin
 {
-    public class GamaManager : SingletonMonoBehaviour<GamaManager>
+    public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         void Start()
         {
