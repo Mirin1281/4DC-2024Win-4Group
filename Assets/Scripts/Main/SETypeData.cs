@@ -10,6 +10,7 @@ namespace Mirin
         [InspectorName("玉破壊音")] BallClick,
         [InspectorName("空振り")] EmptyClick,
         [InspectorName("確定")] Pati,
+        [InspectorName("終了ホイッスル")] Finish,
     }
 
     [CreateAssetMenu(

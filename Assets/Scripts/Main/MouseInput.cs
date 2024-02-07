@@ -9,6 +9,7 @@ namespace Mirin
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] Camera mainCamera;
         [SerializeField] FeverManager feverManager;
+
         bool isLoop;
         public bool IsLoop
         {
@@ -64,7 +65,7 @@ namespace Mirin
                 RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
 
                 bool isHit = false;
-                foreach(var hit2d in hit2ds)
+                foreach (var hit2d in hit2ds)
                 {
                     if (hit2d && hit2d.transform.CompareTag("Ball"))
                     {
@@ -74,7 +75,7 @@ namespace Mirin
                     }
                 }
 
-                if(isHit)
+                if (isHit)
                 {
                     SEManager.Instance.PlaySE(SEType.BallClick);
                     if (feverManager.IsFeverMode) return;
