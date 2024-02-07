@@ -56,7 +56,7 @@ namespace Mirin
             Time.timeScale = 0f;
             feverCanvas.ShowCanvas().Forget();
             CreateBlackPlateAsync(feverTime).Forget();
-            await UniTask.Delay(2000, true);
+            await UniTask.Delay(1500, true);
             
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
@@ -78,11 +78,12 @@ namespace Mirin
 
         async UniTask CreateBlackPlateAsync(float time)
         {
-            for(int i = 0; i < (time + 2) * 20; i++)
+            for(int i = 0; i < (time + 1) * 20; i++)
             {
                 var plate = blackPlatePool.GetPlate();
                 Move(plate).Forget();
-                await UniTask.Delay(50, true);
+                var randWait = Random.Range(10, 90);
+                await UniTask.Delay(randWait, true);
             }
 
             async UniTask Move(Component plt)

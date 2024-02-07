@@ -21,8 +21,8 @@ namespace Mirin
             readyImage.gameObject.SetActive(false);
             goImage.gameObject.SetActive(true);
 
-            await goImage.transform.DOScale(2f, 0.7f).From(0.6f).SetEase(Ease.OutQuad);
-
+            _ = goImage.transform.DOScale(2f, 0.7f).From(0.6f).SetEase(Ease.OutQuad);
+            await MyHelper.WaitSeconds(0.4f, default);
             await goImage.DOFade(0f, 0.3f);
             gameObject.SetActive(false);
 

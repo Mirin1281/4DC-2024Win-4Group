@@ -35,6 +35,9 @@ namespace Mirin
             }
         }
 
+        int clickCount;
+        public event Action<int> OnClicked;
+
         public void ResetComboCount()
         {
             Combo = 0;
@@ -59,8 +62,11 @@ namespace Mirin
 
         void CheckMouseDown()
         {
-            if (Input.GetMouseButtonDown(0) && IsEnabled)
+            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && IsEnabled)
             {
+                clickCount++;
+                OnClicked?.Invoke(clickCount);
+
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
 
