@@ -19,4 +19,7 @@ MonoBehaviour:
     volumeRate: 1
   - type: 1
     se: {fileID: 8300000, guid: b6aa162c5560f9e41b8895af5179c4e0, type: 3}
+    volumeRate: 0.3
+  - type: 2
+    se: {fileID: 8300000, guid: f9c3999e97b153840baeb849ef8927f4, type: 3}
     volumeRate: 1

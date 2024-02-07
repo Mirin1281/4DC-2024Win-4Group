@@ -12,8 +12,14 @@ namespace Mirin
             Ball ball = GetInstance();
             ball.SetSize(0.3f);
             ball.SetSprite(typeData.GetObject(type));
-            /*ball.SetCollider(true);
-            ball.SetAlpha(1f);*/
+            var score = type switch
+            {
+                BallSpriteType.None => 0,
+                BallSpriteType.Blue1 => 1000,
+                BallSpriteType.Out1 => 3000,
+                _ => throw new System.Exception()
+            };
+            ball.SetScore(score);
             ball.SetOrder(Random.Range(0, 10));
             ball.SetScoreManager(scoreManager);
             return ball;

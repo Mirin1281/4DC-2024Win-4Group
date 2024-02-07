@@ -32,7 +32,7 @@ namespace Mirin
             {
                 if(IsFever)
                 {
-                    var ball = ballPool.GetBall(BallSpriteType.Red1);
+                    var ball = ballPool.GetBall(BallSpriteType.Out1);
                     BallMoveInFever(ball, token).Forget();
                     await MyHelper.WaitSeconds(0.05f, token);
                 }

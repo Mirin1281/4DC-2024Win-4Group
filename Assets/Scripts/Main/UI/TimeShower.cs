@@ -15,7 +15,7 @@ namespace Mirin
 
         void UpdateText(float time)
         {
-            tmpro.SetText($"Time: {MyHelper.GameTime - time:00}s");
+            tmpro.SetText($"‚Ì‚±‚è : {MyHelper.GameTime - time:00}s");
         }
     }
 }

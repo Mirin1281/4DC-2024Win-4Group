@@ -11,7 +11,7 @@ namespace Mirin
         private void Start()
         {
             slider.maxValue = MyHelper.FeverCount;
-            mouseInput.OnClicked += UpdateSliderValue;
+            mouseInput.OnComboCountChanged += UpdateSliderValue;
         }
 
         void UpdateSliderValue(int comboCount)

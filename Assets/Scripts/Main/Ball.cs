@@ -21,6 +21,11 @@ namespace Mirin
             gameObject.SetActive(false);
         }
 
+        public void SetScore(int s)
+        {
+            score = s;
+        }
+
         public void SetScoreManager(ScoreManager sManager)
         {
             scoreManager = sManager;

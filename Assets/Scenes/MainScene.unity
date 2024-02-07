@@ -695,7 +695,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9339623, g: 0.8502581, b: 0.8502581, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -815,10 +815,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ComboGuage
+  m_text: "\u30B3\u30F3\u30DC\u306E\u30B2\u30FC\u30B8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
+  m_sharedMaterial: {fileID: -4994178255698379442, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6363370352803460945, guid: 25735d5b95699104b9c2bfa4806858ea, type: 3}
-  prepare: 30
+  prepare: 50
   showLog: 1
   typeData: {fileID: 11400000, guid: 15294cb0e209de14db04b722a584bbbb, type: 2}
   scoreManager: {fileID: 1311297385}
@@ -1127,10 +1127,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time: 60s'
+  m_text: "\u306E\u3053\u308A : 60s"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
+  m_sharedMaterial: {fileID: -4994178255698379442, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPool: {fileID: 719887479}
-  speed: 2
+  speed: 4
 --- !u!4 &1341820582
 Transform:
   m_ObjectHideFlags: 0
@@ -2610,10 +2610,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: 0000000'
+  m_text: "\u3059\u3053\u3042 : 000000"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
+  m_sharedMaterial: {fileID: -4994178255698379442, guid: b9cfd3dddf6fa3b4c813184921051989, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2647,7 +2647,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: -19.47
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

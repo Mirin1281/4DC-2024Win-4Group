@@ -17,7 +17,7 @@ namespace Mirin
 
         void Start()
         {
-            mouseInput.OnClicked += CheckComboCount;
+            mouseInput.OnComboCountChanged += CheckComboCount;
         }
 
         void CheckComboCount(int comboCount)
@@ -45,10 +45,6 @@ namespace Mirin
             await MyHelper.WaitSeconds(feverTime, default);
 
             mouseInput.IsEnabled = false;
-            Time.timeScale = 0f;
-            await UniTask.Delay(2000, true);
-            Time.timeScale = 1f;
-            
             ballCreator.IsFever = false;
             timer.AddTime = true;
             mouseInput.IsEnabled = true;

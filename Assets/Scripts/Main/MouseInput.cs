@@ -24,17 +24,25 @@ namespace Mirin
         }
 
         int combo;
+        int Combo
+        {
+            get => combo;
+            set
+            {
+                combo = Mathf.Clamp(value, 0, MyHelper.FeverCount);
+                OnComboCountChanged?.Invoke(Combo);
+            }
+        }
 
         public void ResetComboCount()
         {
-            combo = 0;
-            OnClicked?.Invoke(combo);
+            Combo = 0;
         }
 
         /// <summary>
         /// à¯êîÇÕÉRÉìÉ{êî
         /// </summary>
-        public event Action<int> OnClicked;
+        public event Action<int> OnComboCountChanged;
 
         public bool IsEnabled { get; set; } = true;
 
@@ -66,19 +74,18 @@ namespace Mirin
                     }
                 }
 
-                
                 if(isHit)
                 {
                     SEManager.Instance.PlaySE(SEType.BallClick);
                     if (feverManager.IsFeverMode) return;
-                    combo++;
+                    Combo++;
                 }
                 else
                 {
+                    SEManager.Instance.PlaySE(SEType.EmptyClick);
                     if (feverManager.IsFeverMode) return;
-                    combo = 0;
+                    Combo -= 5;
                 }
-                OnClicked?.Invoke(combo);
             }
         }
     }

@@ -18,4 +18,4 @@ MonoBehaviour:
   - enumParam: 1
     obj: {fileID: 21300000, guid: 1b6a6eb4a51b3154a95cad636ce78bbd, type: 3}
   - enumParam: 2
-    obj: {fileID: 21300000, guid: 0cc96612baf160945a024816e4f91500, type: 3}
+    obj: {fileID: 21300000, guid: ad22c191205e5b541848b06853216872, type: 3}

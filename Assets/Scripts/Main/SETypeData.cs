@@ -6,6 +6,7 @@ public enum SEType
 {
     [InspectorName("なし")] None,
     [InspectorName("玉破壊音")] BallClick,
+    [InspectorName("空振り")] EmptyClick,
 }
 
 [CreateAssetMenu(
