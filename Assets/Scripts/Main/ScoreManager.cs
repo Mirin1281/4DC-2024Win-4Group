@@ -1,12 +1,23 @@
 using UnityEngine;
+using TMPro;
 
-public class ScoreManager : MonoBehaviour
+namespace Mirin
 {
-    [SerializeField] int score;
-    public int Score => score;
-
-    public void GetScore(int s)
+    public class ScoreManager : MonoBehaviour
     {
-        score += s;
+        [SerializeField] int score;
+        public int Score => score;
+        [SerializeField] TMP_Text tmpro;
+
+        public void GetScore(int s)
+        {
+            score += s;
+            UpdateText();
+        }
+
+        void UpdateText()
+        {
+            tmpro.SetText(score.ToString());
+        }
     }
 }
