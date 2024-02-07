@@ -13,6 +13,8 @@ namespace Mirin
         [SerializeField] Image fillImage;
         [SerializeField] BallCreator ballCreator;
         [SerializeField] FeverCanvas feverCanvas;
+        [SerializeField] ComboSlider comboSlider;
+        [SerializeField] BlackPlatePool blackPlatePool;
 
         public bool IsFeverMode { get; private set; }
 
@@ -41,25 +43,26 @@ namespace Mirin
             if(firstFever)
             {
                 BGMManager.Instance.Play(
-                    BGMPath.KISEION_01, volumeRate: 0.6f, allowsDuplicate: true);
+                    BGMPath.CLUB_F, volumeRate: 0.6f, allowsDuplicate: true);
                 firstFever = false;
             }
             else
             {
-                BGMManager.Instance.UnPause(BGMPath.KISEION_01);
+                BGMManager.Instance.UnPause(BGMPath.CLUB_F);
             }
             var audioSources = BGMManager.Instance.GetComponents<AudioSource>();
-            audioSources[1].time = 30.6f;
+            audioSources[1].time = 8f;
 
             Time.timeScale = 0f;
             feverCanvas.ShowCanvas().Forget();
-            await UniTask.Delay(4000, true);
+            CreateBlackPlateAsync(feverTime).Forget();
+            await UniTask.Delay(2000, true);
             
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
             Time.timeScale = 1f;
-            
-            RainbowAsync().Forget();
+
+            comboSlider.RainbowAsync(feverTime).Forget();
             ballCreator.IsFever = true;
             await MyHelper.WaitSeconds(feverTime, default);
 
@@ -69,27 +72,28 @@ namespace Mirin
             mouseInput.IsEnabled = true;
             mouseInput.ResetComboCount();
             IsFeverMode = false;
-            BGMManager.Instance.Pause(BGMPath.KISEION_01);
+            BGMManager.Instance.Pause(BGMPath.CLUB_F);
             BGMManager.Instance.UnPause(BGMPath.FOURDC302);
         }
 
-        async UniTask RainbowAsync()
+        async UniTask CreateBlackPlateAsync(float time)
         {
-            float t = 0f;
-            float s = 0f;
-            while(t < feverTime)
+            for(int i = 0; i < (time + 2) * 20; i++)
             {
-                if(s > 1)
-                {
-                    s = 0f;
-                }
-                fillImage.color = Color.HSVToRGB(s, 1, 1);
-
-                t += Time.deltaTime;
-                s += Time.deltaTime;
-                await UniTask.Yield();
+                var plate = blackPlatePool.GetPlate();
+                Move(plate).Forget();
+                await UniTask.Delay(50, true);
             }
-            fillImage.color = Color.green;
+
+            async UniTask Move(Component plt)
+            {
+                var randDir = Random.Range(0f, 360f);
+                var randSize = Random.Range(2f, 8f);
+                plt.transform.localPosition =
+                    randSize * new Vector3(MyHelper.Cos(randDir), MyHelper.Sin(randDir));
+                await UniTask.Delay(800, true);
+                plt.gameObject.SetActive(false);
+            }
         }
     }
 }

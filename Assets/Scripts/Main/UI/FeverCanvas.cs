@@ -10,7 +10,7 @@ public class FeverCanvas : MonoBehaviour
     public async UniTask ShowCanvas()
     {
         gameObject.SetActive(true);
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < 6; i++)
         {
             await image.rectTransform.DOLocalMoveY(-1080f, i * 0.05f)
                 .From(1080f).SetEase(Ease.InOutQuad).SetUpdate(true);

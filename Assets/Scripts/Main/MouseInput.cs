@@ -77,30 +77,28 @@ namespace Mirin
 
                 if (isHit)
                 {
-                    bool half = UnityEngine.Random.Range(0, 2) == 0;
+                    int rand = UnityEngine.Random.Range(1, 101);
                     if (feverManager.IsFeverMode)
                     {
-                        if(half)
+                        var seType = rand switch
                         {
-                            SEManager.Instance.PlaySE(SEType.FeverBallClick);
-                        }
-                        else
-                        {
-                            SEManager.Instance.PlaySE(SEType.FeverBallClick2);
-                        }
-                        
+                            <= 20 => SEType.FeverBallClick5,
+                            <= 40 => SEType.FeverBallClick4,
+                            <= 60 => SEType.FeverBallClick3,
+                            <= 80 => SEType.FeverBallClick2,
+                            _ => SEType.FeverBallClick,
+                        };
+                        SEManager.Instance.PlaySE(seType);
                         return;
                     }
                     else
                     {
-                        if (half)
+                        var seType = rand switch
                         {
-                            SEManager.Instance.PlaySE(SEType.BallClick);
-                        }
-                        else
-                        {
-                            SEManager.Instance.PlaySE(SEType.BallClick2);
-                        }
+                            <= 50 => SEType.BallClick2,
+                            _ => SEType.BallClick,
+                        };
+                        SEManager.Instance.PlaySE(seType);
                     }
                     Combo++;
                 }

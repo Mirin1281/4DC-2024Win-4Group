@@ -14,6 +14,9 @@ namespace Mirin
         [InspectorName("玉破壊音(フィーバー)")] FeverBallClick,
         [InspectorName("玉破壊音(フィーバー)2")] FeverBallClick2,
         [InspectorName("玉破壊音2")] BallClick2,
+        [InspectorName("玉破壊音(フィーバー)3")] FeverBallClick3,
+        [InspectorName("玉破壊音(フィーバー)4")] FeverBallClick4,
+        [InspectorName("玉破壊音(フィーバー)5")] FeverBallClick5,
     }
 
     [CreateAssetMenu(

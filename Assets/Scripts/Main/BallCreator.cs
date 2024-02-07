@@ -37,7 +37,8 @@ namespace Mirin
                 {
                     var type = randTypeNum switch
                     {
-                        <= 1 => BallSpriteType.Out4,
+                        <= 1 => BallSpriteType.Anpan,
+                        <= 3 => BallSpriteType.R18,
                         <= 6 => BallSpriteType.Out1,
                         <= 20 => BallSpriteType.Out2,
                         _ => BallSpriteType.Out3,
