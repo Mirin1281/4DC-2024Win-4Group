@@ -11,11 +11,10 @@ namespace Mirin
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] int score = 100000;
 
-        void OnMouseDown()
+        public void OnClicked()
         {
-            /*scoreManager.GetScore(score);
+            scoreManager.GetScore(score);
             gameObject.SetActive(false);
-            Debug.Log(0);*/
         }
 
         public void SetScoreManager(ScoreManager sManager)
@@ -64,7 +63,7 @@ namespace Mirin
             transform.localPosition = startPos;
             SetRotate(deg);
             var time = 0f;
-            var vec = speed * new Vector2(MyStatic.Cos(deg), MyStatic.Sin(deg));
+            var vec = speed * new Vector2(MyHelper.Cos(deg), MyHelper.Sin(deg));
             while (gameObject.activeInHierarchy && time < moveTime)
             {
                 transform.localPosition = startPos + time * vec;
@@ -84,7 +83,7 @@ namespace Mirin
             transform.localPosition = startPos;
             SetRotate(deg);
             var time = 0f;
-            var vec = new Vector2(MyStatic.Cos(deg), MyStatic.Sin(deg));
+            var vec = new Vector2(MyHelper.Cos(deg), MyHelper.Sin(deg));
             while (gameObject.activeInHierarchy && time < moveTime)
             {
                 transform.localPosition = startPos + vec * ease.Ease(time);

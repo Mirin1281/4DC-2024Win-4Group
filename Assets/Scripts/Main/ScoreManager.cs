@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 namespace Mirin
 {
@@ -9,15 +10,13 @@ namespace Mirin
         public int Score => score;
         [SerializeField] TMP_Text tmpro;
 
+        public event Action<int> OnScoreChanged;
+
         public void GetScore(int s)
         {
             score += s;
-            UpdateText();
         }
 
-        void UpdateText()
-        {
-            tmpro.SetText(score.ToString());
-        }
+        
     }
 }

@@ -7,8 +7,9 @@ using System.Threading;
 
 namespace Mirin
 {
-    public static class MyStatic
+    public static class MyHelper
     {
+        public const float GameTime = 60f;
         public static float Sin(float deg) => Mathf.Sin(deg * Mathf.Deg2Rad);
         public static float Cos(float deg) => Mathf.Cos(deg * Mathf.Deg2Rad);
 

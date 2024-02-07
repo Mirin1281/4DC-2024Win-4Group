@@ -2,17 +2,16 @@ using UnityEngine;
 
 namespace Mirin
 {
-    public class MoouseInput : MonoBehaviour
+    public class MouseInput : MonoBehaviour
     {
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] Camera mainCamera;
-        [SerializeField] int score = 100000000;
 
         void Start()
         {
             if(scoreManager == null)
             {
-                scoreManager = MyStatic.FindComponent<ScoreManager>();
+                scoreManager = MyHelper.FindComponent<ScoreManager>();
             }
             if(mainCamera == null)
             {
@@ -27,16 +26,17 @@ namespace Mirin
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
 
+                bool isHit = false;
                 foreach(var hit2d in hit2ds)
                 {
-                    if (hit2d)
+                    if (hit2d && hit2d.transform.CompareTag("Ball"))
                     {
-                        var clickedGameObject = hit2d.transform.gameObject;
-                        if (clickedGameObject.CompareTag("Ball") == false) return;
-                        clickedGameObject.SetActive(false);
-                        scoreManager.GetScore(score);
+                        isHit = true;
+                        var ball = hit2d.transform.GetComponent<Ball>();
+                        ball.OnClicked();
                     }
                 }
+                Debug.Log(isHit ? "‚Å‚«‚½" : "‚Å‚«‚Ä‚È‚¢");
             }
         }
     }

@@ -4,24 +4,32 @@ using System.Threading;
 
 namespace Mirin
 {
-    public class Test : MonoBehaviour
+    public class BallCreator : MonoBehaviour
     {
-        async UniTask Start()
+        [SerializeField] BallPool ballPool;
+        [SerializeField] float speed = 1f;
+
+        public async UniTask LoopCreateAsync()
         {
-            var ballPool = MyStatic.FindComponent<BallPool>();
             var token = this.GetCancellationTokenOnDestroy();
             while (true)
             {
                 var ball = ballPool.GetBall(BallSpriteType.Blue1);
                 BallMove(ball, token).Forget();
-                await MyStatic.WaitSeconds(0.1f, token);
+                await MyHelper.WaitSeconds(0.1f, token);
             }
         }
 
         async UniTask BallMove(Ball ball, CancellationToken token)
         {
             var randX = Random.Range(-7.5f, 7.5f);
-            await ball.LinearMoveAsync(new Vector2(randX, 7f), 270, 12f, token, 5f);
+            float t = 0f;
+            while(t < 5f && ball.gameObject.activeInHierarchy)
+            {
+                ball.transform.localPosition = new Vector3(randX, 7 - t * t * speed);
+                t += Time.deltaTime;
+                await UniTask.Yield(token);
+            }
             ball.gameObject.SetActive(false);
 
         }
