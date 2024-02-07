@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using System.Threading;
+using KanKikuchi.AudioManager;
 
 namespace Mirin
 {
@@ -20,7 +21,7 @@ namespace Mirin
                 await tutorialCanvas.ShowTutorial();
                 GamaManager.Instance.IsFirstWatchTutorial = false;
             }
-            
+            BGMManager.Instance.Play(BGMPath.FOURDC302, allowsDuplicate: true);
             ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsLoop = true;

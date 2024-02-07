@@ -1,27 +1,30 @@
 using UnityEngine;
 
-public class SEManager : SingletonMonoBehaviour<SEManager>
+namespace Mirin
 {
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] SETypeData seData;
-
-    /// <summary>
-    /// SE‚ð–Â‚ç‚µ‚Ü‚·
-    /// </summary>
-    /// <param name="type">SETypeŒ^‚ÅŽw’è</param>
-    /// <param name="volumeRate"></param>
-    public void PlaySE(SEType type, float volumeRate = 1f)
+    public class SEManager : SingletonMonoBehaviour<SEManager>
     {
-        var (se, vol) = seData.GetSE(type);
-        audioSource.PlayOneShot(se, volumeRate * vol);
-    }
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] SETypeData seData;
 
-    protected override void Awake()
-    {
-        base.Awake();
-        if (audioSource is null)
+        /// <summary>
+        /// SE‚ð–Â‚ç‚µ‚Ü‚·
+        /// </summary>
+        /// <param name="type">SETypeŒ^‚ÅŽw’è</param>
+        /// <param name="volumeRate"></param>
+        public void PlaySE(SEType type, float volumeRate = 1f)
         {
-            audioSource = GetComponent<AudioSource>();
+            var (se, vol) = seData.GetSE(type);
+            audioSource.PlayOneShot(se, volumeRate * vol);
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+            if (audioSource is null)
+            {
+                audioSource = GetComponent<AudioSource>();
+            }
         }
     }
 }

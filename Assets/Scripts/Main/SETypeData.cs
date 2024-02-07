@@ -2,76 +2,79 @@
 using System;
 using System.Collections.Generic;
 
-public enum SEType
+namespace Mirin
 {
-    [InspectorName("なし")] None,
-    [InspectorName("玉破壊音")] BallClick,
-    [InspectorName("空振り")] EmptyClick,
-    [InspectorName("確定")] Pati,
-}
-
-[CreateAssetMenu(
-    fileName = "SEData",
-    menuName = "ScriptableObject/SEData")
-]
-
-public class SETypeData : ScriptableObject
-{
-    [SerializeField] float masterVol = 1f;
-
-    [Header("右上の「︙」 > 「◆SetEnum」から列挙子を更新できます")]
-    [SerializeField] List<LinkedSE> linkedSeList;
-
-    [Serializable]
-    class LinkedSE
+    public enum SEType
     {
-        [SerializeField] SEType type;
-
-        [SerializeField] AudioClip se;
-
-        [SerializeField] float volumeRate = 1f;
-
-        public void SetType(SEType type)
-        {
-            this.type = type;
-        }
-
-        public AudioClip GetSE() => se;
-
-        public float GetVolume() => volumeRate;
+        [InspectorName("なし")] None,
+        [InspectorName("玉破壊音")] BallClick,
+        [InspectorName("空振り")] EmptyClick,
+        [InspectorName("確定")] Pati,
     }
 
-    /// <summary>
-    /// 列挙子を設定します
-    /// </summary>
-    [ContextMenu("◆SetEnum")]
-    void SetEnum()
+    [CreateAssetMenu(
+        fileName = "SEData",
+        menuName = "ScriptableObject/SEData")
+    ]
+
+    public class SETypeData : ScriptableObject
     {
-        int enumCount = Enum.GetValues(typeof(SEType)).Length;
-        if (linkedSeList == null) linkedSeList = new();
-        int deltaCount = 1; // 仮置き
-        while (deltaCount != 0)
+        [SerializeField] float masterVol = 1f;
+
+        [Header("右上の「︙」 > 「◆SetEnum」から列挙子を更新できます")]
+        [SerializeField] List<LinkedSE> linkedSeList;
+
+        [Serializable]
+        class LinkedSE
         {
-            deltaCount = linkedSeList.Count - enumCount;
-            if (deltaCount > 0)
+            [SerializeField] SEType type;
+
+            [SerializeField] AudioClip se;
+
+            [SerializeField] float volumeRate = 1f;
+
+            public void SetType(SEType type)
             {
-                linkedSeList.RemoveAt(enumCount);
+                this.type = type;
             }
-            else if (deltaCount < 0)
+
+            public AudioClip GetSE() => se;
+
+            public float GetVolume() => volumeRate;
+        }
+
+        /// <summary>
+        /// 列挙子を設定します
+        /// </summary>
+        [ContextMenu("◆SetEnum")]
+        void SetEnum()
+        {
+            int enumCount = Enum.GetValues(typeof(SEType)).Length;
+            if (linkedSeList == null) linkedSeList = new();
+            int deltaCount = 1; // 仮置き
+            while (deltaCount != 0)
             {
-                linkedSeList.Add(new LinkedSE());
+                deltaCount = linkedSeList.Count - enumCount;
+                if (deltaCount > 0)
+                {
+                    linkedSeList.RemoveAt(enumCount);
+                }
+                else if (deltaCount < 0)
+                {
+                    linkedSeList.Add(new LinkedSE());
+                }
+            }
+
+            for (int i = 0; i < enumCount; i++)
+            {
+                linkedSeList[i].SetType((SEType)i);
             }
         }
 
-        for (int i = 0; i < enumCount; i++)
+        public (AudioClip, float) GetSE(SEType type)
         {
-            linkedSeList[i].SetType((SEType)i);
+            var linkedSe = linkedSeList[(int)type];
+            return (linkedSe.GetSE(), linkedSe.GetVolume() * masterVol);
         }
-    }
-
-    public (AudioClip, float) GetSE(SEType type)
-    {
-        var linkedSe = linkedSeList[(int)type];
-        return (linkedSe.GetSE(), linkedSe.GetVolume() * masterVol);
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
+using KanKikuchi.AudioManager;
 
 namespace Mirin
 {
@@ -14,6 +15,8 @@ namespace Mirin
         [SerializeField] FeverCanvas feverCanvas;
 
         public bool IsFeverMode { get; private set; }
+
+        bool firstFever = true;
 
         void Start()
         {
@@ -30,6 +33,7 @@ namespace Mirin
 
         async UniTask Fever()
         {
+            BGMManager.Instance.Pause(BGMPath.FOURDC302);
             IsFeverMode = true;
             mouseInput.IsEnabled = false;
             timer.AddTime = false;
@@ -37,6 +41,18 @@ namespace Mirin
             Time.timeScale = 0f;
             feverCanvas.ShowCanvas().Forget();
             await UniTask.Delay(4000, true);
+            if(firstFever)
+            {
+                BGMManager.Instance.Play(BGMPath.KISEION_01, allowsDuplicate: true);
+                firstFever = false;
+            }
+            else
+            {
+                BGMManager.Instance.UnPause(BGMPath.KISEION_01);
+                var audioSources = BGMManager.Instance.GetComponents<AudioSource>();
+                audioSources[1].time -= 2f;
+            }
+            
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
             Time.timeScale = 1f;
@@ -51,6 +67,8 @@ namespace Mirin
             mouseInput.IsEnabled = true;
             mouseInput.ResetComboCount();
             IsFeverMode = false;
+            BGMManager.Instance.Pause(BGMPath.KISEION_01);
+            BGMManager.Instance.UnPause(BGMPath.FOURDC302);
         }
 
         async UniTask RainbowAsync()
