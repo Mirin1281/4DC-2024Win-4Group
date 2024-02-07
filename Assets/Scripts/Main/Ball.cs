@@ -9,10 +9,14 @@ namespace Mirin
         [SerializeField] Collider2D col;
         [SerializeField] SpriteRenderer spriteRenderer;
         [SerializeField] ScoreManager scoreManager;
+        [SerializeField] Particle particle;
         [SerializeField] int score = 100000;
 
         public void OnClicked()
         {
+            var p = Instantiate(particle);
+            p.transform.localPosition = transform.localPosition;
+            p.PlayPaticle();
             scoreManager.GetScore(score);
             gameObject.SetActive(false);
         }

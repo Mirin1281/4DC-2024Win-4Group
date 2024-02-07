@@ -36,6 +36,8 @@ namespace Mirin
         /// </summary>
         public event Action<int> OnClicked;
 
+        public bool IsEnabled { get; set; } = true;
+
         async UniTask LoopCheckAsync()
         {
             var token = this.GetCancellationTokenOnDestroy();
@@ -48,7 +50,7 @@ namespace Mirin
 
         void CheckMouseDown()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && IsEnabled)
             {
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
                 RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
@@ -64,13 +66,16 @@ namespace Mirin
                     }
                 }
 
-                if (feverManager.IsFeverMode) return;
+                
                 if(isHit)
                 {
+                    SEManager.Instance.PlaySE(SEType.BallClick);
+                    if (feverManager.IsFeverMode) return;
                     combo++;
                 }
                 else
                 {
+                    if (feverManager.IsFeverMode) return;
                     combo = 0;
                 }
                 OnClicked?.Invoke(combo);

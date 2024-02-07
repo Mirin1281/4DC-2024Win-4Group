@@ -31,23 +31,27 @@ namespace Mirin
         async UniTask Fever()
         {
             IsFeverMode = true;
+            mouseInput.IsEnabled = false;
             timer.AddTime = false;
             Time.timeScale = 0f;
             feverCanvas.ShowCanvas();
             await UniTask.Delay(2000, true);
+            mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
             Time.timeScale = 1f;
-
+            
             RainbowAsync().Forget();
             ballCreator.IsFever = true;
             await MyHelper.WaitSeconds(feverTime, default);
 
+            mouseInput.IsEnabled = false;
             Time.timeScale = 0f;
             await UniTask.Delay(2000, true);
             Time.timeScale = 1f;
-
+            
             ballCreator.IsFever = false;
             timer.AddTime = true;
+            mouseInput.IsEnabled = true;
             mouseInput.ResetComboCount();
             IsFeverMode = false;
         }
