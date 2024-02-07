@@ -33,9 +33,10 @@ namespace Mirin
             IsFeverMode = true;
             mouseInput.IsEnabled = false;
             timer.AddTime = false;
+            SEManager.Instance.PlaySE(SEType.Pati);
             Time.timeScale = 0f;
-            feverCanvas.ShowCanvas();
-            await UniTask.Delay(2000, true);
+            feverCanvas.ShowCanvas().Forget();
+            await UniTask.Delay(4000, true);
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
             Time.timeScale = 1f;
