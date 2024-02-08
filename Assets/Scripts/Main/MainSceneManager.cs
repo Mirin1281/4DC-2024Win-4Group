@@ -17,6 +17,9 @@ namespace Mirin
 
         async UniTask Start()
         {
+#if UNITY_EDITOR
+            Application.targetFrameRate = 60;
+#endif
             Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
             if (GameManager.Instance.IsFirstWatchTutorial)
             {
@@ -40,6 +43,7 @@ namespace Mirin
             await MyHelper.WaitSeconds(2f, default);
             await FadeLoadSceneManager.Instance.LoadSceneAsync(0.5f, "Result");
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            BGMManager.Instance.Stop();
         }
     }
 }
