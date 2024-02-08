@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Title.unity
+    path: Assets/Scenes/YorikawaAise/Title.unity
     guid: a23c6ba7861cb4e4ba8bba66e324dcb2
   - enabled: 1
     path: Assets/gamu/StoryScenes.unity
