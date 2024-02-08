@@ -88,6 +88,7 @@ namespace Mirin
                     {
                         var seType = rand switch
                         {
+                            <= 2 => SEType.Piiiii,
                             <= 20 => SEType.FeverBallClick5,
                             <= 40 => SEType.FeverBallClick4,
                             <= 60 => SEType.FeverBallClick3,

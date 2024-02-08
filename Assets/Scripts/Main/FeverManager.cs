@@ -81,7 +81,7 @@ namespace Mirin
 
         async UniTask CreateBlackPlateAsync(float time)
         {
-            for(int i = 0; i < (time + 1) * 20; i++)
+            for(int i = 0; i < (time + 1) * 10; i++)
             {
                 var plate = blackPlatePool.GetPlate();
                 Move(plate).Forget();
@@ -89,10 +89,18 @@ namespace Mirin
                 await UniTask.Delay(randWait, true);
             }
 
+            for (int i = 0; i < (time + 1) * 20; i++)
+            {
+                var plate = blackPlatePool.GetPlate();
+                Move(plate).Forget();
+                var randWait = Random.Range(5, 45);
+                await UniTask.Delay(randWait, true);
+            }
+
             async UniTask Move(Component plt)
             {
                 var randDir = Random.Range(0f, 360f);
-                var randSize = Random.Range(100f, 1000f);
+                var randSize = Random.Range(200f, 1200f);
                 plt.transform.localPosition =
                     randSize * new Vector3(MyHelper.Cos(randDir), MyHelper.Sin(randDir));
                 await UniTask.Delay(800, true);
