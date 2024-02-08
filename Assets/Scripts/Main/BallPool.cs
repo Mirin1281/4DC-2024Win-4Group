@@ -4,22 +4,32 @@ namespace Mirin
 {
     public class BallPool : PoolBase<Ball>
     {
-        [SerializeField] BallSpriteTypeData typeData;
+        [SerializeField] BallSpriteTypeDat typeData;
         [SerializeField] ScoreManager scoreManager;
 
         public Ball GetBall(BallSpriteType type)
         {
             Ball ball = GetInstance();
-            ball.SetSize(0.3f);
             ball.SetSprite(typeData.GetObject(type));
             var score = type switch
             {
                 BallSpriteType.None => 0,
-                BallSpriteType.Blue1 => 1000,
-                BallSpriteType.Out1 => 3000,
+                BallSpriteType.Blue1 => 100,
+                BallSpriteType.Purple1 => 500,
+                BallSpriteType.Red1 => 3000,
+                BallSpriteType.Yellow1 => 5000,
+                BallSpriteType.YelGre1 => 20,
+                BallSpriteType.Out1 => 20,
+                BallSpriteType.Out2 => 200,
+                BallSpriteType.Out3 => 1000,
+                BallSpriteType.Anpan => 10000,
+                BallSpriteType.R18 => 1800,
+                BallSpriteType.X => 1000,
+                BallSpriteType.Money => 10000,
                 _ => throw new System.Exception()
             };
             ball.SetScore(score);
+            ball.SetType(type);
             ball.SetOrder(Random.Range(0, 10));
             ball.SetScoreManager(scoreManager);
             return ball;

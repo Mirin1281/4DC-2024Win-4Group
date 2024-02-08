@@ -1,13 +1,15 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using KanKikuchi.AudioManager;
 
 namespace Mirin
 {
     public class MainSceneManager : MonoBehaviour
     {
+        [SerializeField] Texture2D cursorTexture;
         [SerializeField] TutorialCanvas tutorialCanvas;
+        [SerializeField] ReadyCanvas readyCanvas;
+        [SerializeField] Canvas finishCanvas;
         [SerializeField] Timer timer;
         [SerializeField] BallCreator ballCreator;
         [SerializeField] MouseInput mouseInput;
@@ -15,28 +17,29 @@ namespace Mirin
 
         async UniTask Start()
         {
-            var token = this.GetCancellationTokenOnDestroy();
-            if(GamaManager.Instance.IsFirstWatchTutorial)
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+            if (GameManager.Instance.IsFirstWatchTutorial)
             {
                 await tutorialCanvas.ShowTutorial();
-                GamaManager.Instance.IsFirstWatchTutorial = false;
+                GameManager.Instance.IsFirstWatchTutorial = false;
             }
+            await readyCanvas.ShowReady();
+
             BGMManager.Instance.Play(BGMPath.FOURDC302, allowsDuplicate: true);
             ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsLoop = true;
-            await WaitTimeAsync(timer, MyHelper.GameTime, token);
+            await UniTask.WaitUntil(() => timer.CurrentTime > MyHelper.GameTime);
+
+            finishCanvas.gameObject.SetActive(true);
+            SEManager.Instance.PlaySE(SEType.Finish);
             ballCreator.IsLoop = false;
             timer.AddTime = false;
             mouseInput.IsLoop = false;
-            GamaManager.Instance.Score = scoreManager.Score;
-            FadeLoadSceneManager.Instance.LoadScene(0.5f, "ResultScene");
-        }
-
-        async UniTask WaitTimeAsync(Timer timer, float time, CancellationToken token)
-        {
-            await UniTask.WaitUntil(() =>
-                timer.CurrentTime > time, cancellationToken: token);
+            GameManager.Instance.Score = scoreManager.Score;
+            await MyHelper.WaitSeconds(2f, default);
+            await FadeLoadSceneManager.Instance.LoadSceneAsync(0.5f, "Result");
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Mirin
 
         void UpdateText(int getScore)
         {
-            tmpro.SetText($"‚·‚±‚  : {scoreManager.Score:000000}");
+            tmpro.SetText($"‚·‚±‚ : {scoreManager.Score:000000}");
         }
     }
 }

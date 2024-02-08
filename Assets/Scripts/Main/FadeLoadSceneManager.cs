@@ -7,6 +7,11 @@ namespace Mirin
 {
     public class FadeLoadSceneManager : SingletonMonoBehaviour<FadeLoadSceneManager>
     {
+        void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         [SerializeField] Image fadeImage;
 
         // フェード中ボタンの多重クリックを禁止するために使う

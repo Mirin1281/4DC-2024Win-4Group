@@ -9,6 +9,7 @@ namespace Mirin
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] Camera mainCamera;
         [SerializeField] FeverManager feverManager;
+
         bool isLoop;
         public bool IsLoop
         {
@@ -34,6 +35,9 @@ namespace Mirin
             }
         }
 
+        int clickCount;
+        public event Action<int> OnClicked;
+
         public void ResetComboCount()
         {
             Combo = 0;
@@ -58,13 +62,16 @@ namespace Mirin
 
         void CheckMouseDown()
         {
-            if (Input.GetMouseButtonDown(0) && IsEnabled)
+            if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)) && IsEnabled)
             {
+                clickCount++;
+                OnClicked?.Invoke(clickCount);
+
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
+                RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction, 12f);
 
                 bool isHit = false;
-                foreach(var hit2d in hit2ds)
+                foreach (var hit2d in hit2ds)
                 {
                     if (hit2d && hit2d.transform.CompareTag("Ball"))
                     {
@@ -73,18 +80,47 @@ namespace Mirin
                         ball.OnClicked();
                     }
                 }
+                scoreManager.GetScore(hit2ds.Length * hit2ds.Length * 50);
 
-                if(isHit)
+                int rand = UnityEngine.Random.Range(1, 101);
+                if (isHit)
                 {
-                    SEManager.Instance.PlaySE(SEType.BallClick);
-                    if (feverManager.IsFeverMode) return;
+                    if (feverManager.IsFeverMode)
+                    {
+                        var seType = rand switch
+                        {
+                            <= 2 => SEType.Piiiii,
+                            <= 20 => SEType.FeverBallClick5,
+                            <= 40 => SEType.FeverBallClick4,
+                            <= 60 => SEType.FeverBallClick3,
+                            <= 80 => SEType.FeverBallClick2,
+                            _ => SEType.FeverBallClick,
+                        };
+                        SEManager.Instance.PlaySE(seType);
+                        return;
+                    }
+                    else
+                    {
+                        var seType = rand switch
+                        {
+                            <= 33 => SEType.BallClick3,
+                            <= 66 => SEType.BallClick2,
+                            _ => SEType.BallClick,
+                        };
+                        SEManager.Instance.PlaySE(seType);
+                    }
                     Combo++;
                 }
                 else
                 {
-                    SEManager.Instance.PlaySE(SEType.EmptyClick);
+                    var seType = rand switch
+                    {
+                        <= 50 => SEType.EmptyClick,
+                        _ => SEType.EmptyClick2,
+                    };
+                    SEManager.Instance.PlaySE(seType);
                     if (feverManager.IsFeverMode) return;
-                    Combo -= 5;
+                    Combo -= 3;
                 }
             }
         }

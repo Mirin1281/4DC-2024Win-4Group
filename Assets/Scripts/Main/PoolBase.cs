@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Mirin
 {
-    public abstract class PoolBase<T> : MonoBehaviour where T : MonoBehaviour
+    public abstract class PoolBase<T> : MonoBehaviour where T : Component
     {
         [SerializeField] T prefab;
 
