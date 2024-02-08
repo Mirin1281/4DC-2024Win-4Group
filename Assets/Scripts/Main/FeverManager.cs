@@ -43,7 +43,7 @@ namespace Mirin
             if(firstFever)
             {
                 BGMManager.Instance.Play(
-                    BGMPath.CLUB_F, volumeRate: 0.6f, allowsDuplicate: true);
+                    BGMPath.CLUB_F, volumeRate: 1f, allowsDuplicate: true);
                 firstFever = false;
             }
             else

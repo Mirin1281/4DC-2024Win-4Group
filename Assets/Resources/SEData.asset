@@ -31,22 +31,22 @@ MonoBehaviour:
     volumeRate: 1
   - type: 5
     se: {fileID: 8300000, guid: 2ddb3d5512695b74f8d117ed46e42fea, type: 3}
-    volumeRate: 1
+    volumeRate: 0.2
   - type: 6
     se: {fileID: 8300000, guid: 42aee71ca7c1d514eb0c208835d61f15, type: 3}
-    volumeRate: 1
+    volumeRate: 0.2
   - type: 7
     se: {fileID: 8300000, guid: 110d21cd87570b945a008dec2a13d8d7, type: 3}
-    volumeRate: 1
+    volumeRate: 0.5
   - type: 8
     se: {fileID: 8300000, guid: 221f35a60a319bd4bb5d24abd55be87d, type: 3}
-    volumeRate: 1
+    volumeRate: 0.2
   - type: 9
     se: {fileID: 8300000, guid: 8e0ab3d985761954888d78e77bf2de2f, type: 3}
-    volumeRate: 1
+    volumeRate: 0.2
   - type: 10
     se: {fileID: 8300000, guid: 058c4c078b00a51449ad69e5bfb5bdd0, type: 3}
-    volumeRate: 1
+    volumeRate: 0.2
   - type: 11
     se: {fileID: 8300000, guid: 0874b92e2e8928943b0049b3f0079175, type: 3}
     volumeRate: 1
@@ -61,10 +61,10 @@ MonoBehaviour:
     volumeRate: 1
   - type: 15
     se: {fileID: 8300000, guid: 72a17a1e69ebfc0428bb9917a31010fc, type: 3}
-    volumeRate: 1.5
+    volumeRate: 1
   - type: 16
     se: {fileID: 8300000, guid: fe5af2d8e52f8ba4b88fe55c4f41708b, type: 3}
     volumeRate: 3
   - type: 17
     se: {fileID: 8300000, guid: 1591a77afb120294baeaa9bf6da3d44c, type: 3}
-    volumeRate: 0.2
+    volumeRate: 0.1

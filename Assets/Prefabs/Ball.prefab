@@ -51,6 +51,7 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   particle: {fileID: 474030437323581262, guid: 6817742f6df34f045929e37666d92b15, type: 3}
   score: 100000
+  type: 0
 --- !u!212 &6363370352803460950
 SpriteRenderer:
   m_ObjectHideFlags: 0

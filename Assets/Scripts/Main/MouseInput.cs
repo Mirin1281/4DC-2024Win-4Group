@@ -80,6 +80,7 @@ namespace Mirin
                         ball.OnClicked();
                     }
                 }
+                scoreManager.GetScore(hit2ds.Length * hit2ds.Length * 100);
 
                 int rand = UnityEngine.Random.Range(1, 101);
                 if (isHit)
@@ -119,7 +120,7 @@ namespace Mirin
                     };
                     SEManager.Instance.PlaySE(seType);
                     if (feverManager.IsFeverMode) return;
-                    Combo -= 5;
+                    Combo -= 3;
                 }
             }
         }
