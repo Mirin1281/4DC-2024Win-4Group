@@ -11,6 +11,7 @@ namespace Mirin
 
         public async UniTask ShowTutorial()
         {
+            SEManager.Instance.PlaySE(SEType.Para);
             gameObject.SetActive(true);
             await frameImage.transform.DOLocalMoveX(0f, 0.5f)
                 .From(2160f).SetEase(Ease.OutQuad);

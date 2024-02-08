@@ -14,6 +14,7 @@ namespace Mirin
         [SerializeField] FeverCanvas feverCanvas;
         [SerializeField] ComboSlider comboSlider;
         [SerializeField] BlackPlatePool blackPlatePool;
+        [SerializeField] BackScroll backScroll;
 
         public bool IsFeverMode { get; private set; }
 
@@ -56,7 +57,8 @@ namespace Mirin
             feverCanvas.ShowCanvas().Forget();
             CreateBlackPlateAsync(feverTime).Forget();
             await UniTask.Delay(1500, true);
-            
+
+            backScroll.SetSpeedAsync(feverTime).Forget();
             mouseInput.IsEnabled = true;
             feverCanvas.CloseCanvas();
             Time.timeScale = 1f;

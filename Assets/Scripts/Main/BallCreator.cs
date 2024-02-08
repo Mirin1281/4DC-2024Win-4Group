@@ -84,12 +84,13 @@ namespace Mirin
             while (IsFever)
             {
                 var s = t / 8f + 1f;
-                var type = Random.Range(1, 101) switch
+                var type = Random.Range(1, 1001) switch
                 {
-                    <= 1 => BallSpriteType.Anpan,
-                    <= 3 => BallSpriteType.R18,
-                    <= 6 => BallSpriteType.Out1,
-                    <= 20 => BallSpriteType.Out2,
+                    <= 5 => BallSpriteType.Anpan,
+                    <= 15 => BallSpriteType.X,
+                    <= 30 => BallSpriteType.R18,
+                    <= 60 => BallSpriteType.Out1,
+                    <= 200 => BallSpriteType.Out2,
                     _ => BallSpriteType.Out3,
                 };
                 var ball = ballPool.GetBall(type);

@@ -20,6 +20,7 @@ namespace Mirin
 
             readyImage.gameObject.SetActive(false);
             goImage.gameObject.SetActive(true);
+            SEManager.Instance.PlaySE(SEType.Start);
 
             _ = goImage.transform.DOScale(2f, 0.7f).From(0.6f).SetEase(Ease.OutQuad);
             await MyHelper.WaitSeconds(0.4f, default);

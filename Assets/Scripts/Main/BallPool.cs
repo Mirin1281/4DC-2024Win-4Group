@@ -23,6 +23,7 @@ namespace Mirin
                 BallSpriteType.Out3 => 1000,
                 BallSpriteType.Anpan => 5000,
                 BallSpriteType.R18 => 1800,
+                BallSpriteType.X => 3000,
                 _ => throw new System.Exception()
             };
             ball.SetScore(score);

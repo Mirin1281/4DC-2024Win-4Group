@@ -32,5 +32,6 @@ namespace Mirin
         [InspectorName("アウト3")] Out3,
         [InspectorName("エンペンメン")] Anpan,
         [InspectorName("R18")] R18,
+        [InspectorName("旧ツイッター")] X,
     }
 }

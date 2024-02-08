@@ -13,7 +13,7 @@ namespace Mirin
         private void Start()
         {
             slider.maxValue = MyHelper.FeverCount;
-            fillImage.color = Color.green;
+            fillImage.color = Color.red;
             mouseInput.OnComboCountChanged += UpdateSliderValue;
         }
 
@@ -41,7 +41,7 @@ namespace Mirin
                 await UniTask.Yield();
             }
             slider.wholeNumbers = true;
-            fillImage.color = Color.green;
+            fillImage.color = Color.red;
         }
     }
 }

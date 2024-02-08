@@ -37,3 +37,5 @@ MonoBehaviour:
     obj: {fileID: 21300000, guid: a51cb3365e0083e448db0f7d78a46f2c, type: 3}
   - enumParam: 11
     obj: {fileID: 21300000, guid: 9ac95e8dc6a72984eb43c47dfbbd713b, type: 3}
+  - enumParam: 12
+    obj: {fileID: 21300000, guid: 3bfbf6b84ec83004b91488fa601d54c6, type: 3}

@@ -4,21 +4,6 @@ using System.Collections.Generic;
 
 namespace Mirin
 {
-    public enum SEType
-    {
-        [InspectorName("なし")] None,
-        [InspectorName("玉破壊音")] BallClick,
-        [InspectorName("空振り")] EmptyClick,
-        [InspectorName("確定")] Pati,
-        [InspectorName("終了ホイッスル")] Finish,
-        [InspectorName("玉破壊音(フィーバー)")] FeverBallClick,
-        [InspectorName("玉破壊音(フィーバー)2")] FeverBallClick2,
-        [InspectorName("玉破壊音2")] BallClick2,
-        [InspectorName("玉破壊音(フィーバー)3")] FeverBallClick3,
-        [InspectorName("玉破壊音(フィーバー)4")] FeverBallClick4,
-        [InspectorName("玉破壊音(フィーバー)5")] FeverBallClick5,
-    }
-
     [CreateAssetMenu(
         fileName = "SEData",
         menuName = "ScriptableObject/SEData")
@@ -83,5 +68,24 @@ namespace Mirin
             var linkedSe = linkedSeList[(int)type];
             return (linkedSe.GetSE(), linkedSe.GetVolume() * masterVol);
         }
+    }
+
+    public enum SEType
+    {
+        [InspectorName("なし")] None,
+        [InspectorName("玉破壊音")] BallClick,
+        [InspectorName("空振り")] EmptyClick,
+        [InspectorName("確定")] Pati,
+        [InspectorName("終了ホイッスル")] Finish,
+        [InspectorName("玉破壊音(フィーバー)")] FeverBallClick,
+        [InspectorName("玉破壊音(フィーバー)2")] FeverBallClick2,
+        [InspectorName("玉破壊音2")] BallClick2,
+        [InspectorName("玉破壊音(フィーバー)3")] FeverBallClick3,
+        [InspectorName("玉破壊音(フィーバー)4")] FeverBallClick4,
+        [InspectorName("玉破壊音(フィーバー)5")] FeverBallClick5,
+        [InspectorName("玉破壊音3")] BallClick3,
+        [InspectorName("空振り2")] EmptyClick2,
+        [InspectorName("めくる")] Para,
+        [InspectorName("開始ホイッスル")] Start,
     }
 }
