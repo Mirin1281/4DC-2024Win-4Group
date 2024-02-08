@@ -9,12 +9,24 @@ namespace Mirin
         [SerializeField] BallPool ballPool;
         [SerializeField] BallSpriteTypeDat typeData;
 
-        public bool IsFever { get; set; }
+        bool isFever;
+        public bool IsFever
+        {
+            private get => isFever;
+            set
+            {
+                isFever = value;
+                if (value == true)
+                {
+                    LoopFeverCreateAsync().Forget();
+                }
+            }
+        }
 
         bool isLoop;
         public bool IsLoop
         {
-            get => isLoop;
+            private get => isLoop;
             set
             {
                 isLoop = value;
@@ -33,37 +45,18 @@ namespace Mirin
                 var randSize = Random.Range(0.1f, 0.5f);
                 var randTypeNum = Random.Range(1, 101);
                 var randRotate = Random.Range(0f, 360f);
-                if (IsFever)
+                var type = randTypeNum switch
                 {
-                    var type = randTypeNum switch
-                    {
-                        <= 1 => BallSpriteType.Anpan,
-                        <= 3 => BallSpriteType.R18,
-                        <= 6 => BallSpriteType.Out1,
-                        <= 20 => BallSpriteType.Out2,
-                        _ => BallSpriteType.Out3,
-                    };
-                    var ball = ballPool.GetBall(type);
-                    ball.SetSize(randSize);
-                    ball.SetRotate(randRotate);
-                    BallMoveInFever(ball, token).Forget();
-                    await MyHelper.WaitSeconds(0.03f, token);
-                }
-                else
-                {
-                    var type = randTypeNum switch
-                    {
-                        <= 3 => BallSpriteType.Yellow1,
-                        <= 10 => BallSpriteType.Red1,
-                        <= 30 => BallSpriteType.Purple1,
-                        _ => BallSpriteType.Blue1,
-                    };
-                    var ball = ballPool.GetBall(type);
-                    ball.SetSize(randSize);
-                    ball.SetRotate(randRotate);
-                    BallMove(ball, token).Forget();
-                    await MyHelper.WaitSeconds(0.1f, token);
-                }
+                    <= 3 => BallSpriteType.Yellow1,
+                    <= 10 => BallSpriteType.Red1,
+                    <= 30 => BallSpriteType.Purple1,
+                    _ => BallSpriteType.Blue1,
+                };
+                var ball = ballPool.GetBall(type);
+                ball.SetSize(randSize);
+                ball.SetRotate(randRotate);
+                BallMove(ball, token).Forget();
+                await MyHelper.WaitSeconds(0.1f, token);
             }
         }
 
@@ -84,12 +77,36 @@ namespace Mirin
             ball.gameObject.SetActive(false);
         }
 
-        async UniTask BallMoveInFever(Ball ball, CancellationToken token)
+        async UniTask LoopFeverCreateAsync()
+        {
+            var token = this.GetCancellationTokenOnDestroy();
+            float t = 0f;
+            while (IsFever)
+            {
+                var s = t / 8f + 1f;
+                var type = Random.Range(1, 101) switch
+                {
+                    <= 1 => BallSpriteType.Anpan,
+                    <= 3 => BallSpriteType.R18,
+                    <= 6 => BallSpriteType.Out1,
+                    <= 20 => BallSpriteType.Out2,
+                    _ => BallSpriteType.Out3,
+                };
+                var ball = ballPool.GetBall(type);
+                ball.SetSize(Random.Range(0.1f, 0.5f) * s);
+                ball.SetRotate(Random.Range(0f, 360f));
+                BallMoveInFever(ball, s, token).Forget();
+                t += 0.03f;
+                await MyHelper.WaitSeconds(0.03f, token);
+            }
+        }
+
+        async UniTask BallMoveInFever(Ball ball, float time, CancellationToken token)
         {
             var randX = Random.Range(-7.5f, 7.5f);
-            var randSpeed = Random.Range(4f, 10f);
+            var randSpeed = Random.Range(4f, 10f) * time * time;
             var randRotate = Random.Range(-500f, 500f);
-            var randMoveX = Random.Range(-0.5f, 0.5f);
+            var randMoveX = Random.Range(-0.5f, 0.5f) * time;
             float t = 0f;
             while (t < 5f && ball.gameObject.activeInHierarchy)
             {

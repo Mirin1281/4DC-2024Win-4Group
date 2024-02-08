@@ -62,11 +62,13 @@ namespace Mirin
             Time.timeScale = 1f;
 
             comboSlider.RainbowAsync(feverTime).Forget();
+            ballCreator.IsLoop = false;
             ballCreator.IsFever = true;
             await MyHelper.WaitSeconds(feverTime, default);
 
             mouseInput.IsEnabled = false;
             ballCreator.IsFever = false;
+            ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsEnabled = true;
             mouseInput.ResetComboCount();
@@ -88,7 +90,7 @@ namespace Mirin
             async UniTask Move(Component plt)
             {
                 var randDir = Random.Range(0f, 360f);
-                var randSize = Random.Range(2f, 8f);
+                var randSize = Random.Range(100f, 1000f);
                 plt.transform.localPosition =
                     randSize * new Vector3(MyHelper.Cos(randDir), MyHelper.Sin(randDir));
                 await UniTask.Delay(800, true);
