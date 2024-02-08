@@ -25,7 +25,7 @@ namespace Mirin
         [InspectorName("紫1")] Purple1,
         [InspectorName("赤1")] Red1,
         [InspectorName("黄色1")] Yellow1,
-        [InspectorName("予備1")] _Space1,
+        [InspectorName("黄緑1")] YelGre1,
         [InspectorName("予備2")] _Space2,
         [InspectorName("アウト1")] Out1,
         [InspectorName("アウト2")] Out2,

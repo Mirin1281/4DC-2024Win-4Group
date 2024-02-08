@@ -47,16 +47,17 @@ namespace Mirin
                 var randRotate = Random.Range(0f, 360f);
                 var type = randTypeNum switch
                 {
-                    <= 3 => BallSpriteType.Yellow1,
-                    <= 10 => BallSpriteType.Red1,
-                    <= 30 => BallSpriteType.Purple1,
-                    _ => BallSpriteType.Blue1,
+                    <= 2 => BallSpriteType.Yellow1,
+                    <= 8 => BallSpriteType.Red1,
+                    <= 25 => BallSpriteType.Purple1,
+                    <= 50 => BallSpriteType.Blue1,
+                    _ => BallSpriteType.YelGre1,
                 };
                 var ball = ballPool.GetBall(type);
                 ball.SetSize(randSize);
                 ball.SetRotate(randRotate);
                 BallMove(ball, token).Forget();
-                await MyHelper.WaitSeconds(0.1f, token);
+                await MyHelper.WaitSeconds(0.08f, token);
             }
         }
 

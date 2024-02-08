@@ -11,6 +11,7 @@ namespace Mirin
         [SerializeField] ScoreManager scoreManager;
         [SerializeField] Particle particle;
         [SerializeField] int score = 100000;
+        [SerializeField] BallSpriteType type;
 
         public void OnClicked()
         {
@@ -19,6 +20,14 @@ namespace Mirin
             p.PlayPaticle();
             scoreManager.GetScore(score);
             gameObject.SetActive(false);
+            if(type == BallSpriteType.Yellow1 || type == BallSpriteType.Anpan)
+            {
+                SEManager.Instance.PlaySE(SEType.Kiran);
+            }
+            else if(type == BallSpriteType.Red1 || type == BallSpriteType.X)
+            {
+                SEManager.Instance.PlaySE(SEType.Coin);
+            }
         }
 
         public void SetScore(int s)
@@ -39,6 +48,11 @@ namespace Mirin
         public void SetSize(float size)
         {
             transform.localScale = Vector3.one * size;
+        }
+
+        public void SetType(BallSpriteType spriteType)
+        {
+            type = spriteType;
         }
 
         public void SetSprite(Sprite sprite)

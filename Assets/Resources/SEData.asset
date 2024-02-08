@@ -59,3 +59,9 @@ MonoBehaviour:
   - type: 14
     se: {fileID: 8300000, guid: 01b2ac4a101e1f048ab0aff5c6108045, type: 3}
     volumeRate: 1
+  - type: 15
+    se: {fileID: 8300000, guid: 72a17a1e69ebfc0428bb9917a31010fc, type: 3}
+    volumeRate: 2
+  - type: 16
+    se: {fileID: 8300000, guid: fe5af2d8e52f8ba4b88fe55c4f41708b, type: 3}
+    volumeRate: 3

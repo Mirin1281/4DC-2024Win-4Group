@@ -14,10 +14,11 @@ namespace Mirin
             var score = type switch
             {
                 BallSpriteType.None => 0,
-                BallSpriteType.Blue1 => 10,
+                BallSpriteType.Blue1 => 20,
                 BallSpriteType.Purple1 => 200,
                 BallSpriteType.Red1 => 500,
                 BallSpriteType.Yellow1 => 1000,
+                BallSpriteType.YelGre1 => 10,
                 BallSpriteType.Out1 => 50,
                 BallSpriteType.Out2 => 500,
                 BallSpriteType.Out3 => 1000,
@@ -27,6 +28,7 @@ namespace Mirin
                 _ => throw new System.Exception()
             };
             ball.SetScore(score);
+            ball.SetType(type);
             ball.SetOrder(Random.Range(0, 10));
             ball.SetScoreManager(scoreManager);
             return ball;

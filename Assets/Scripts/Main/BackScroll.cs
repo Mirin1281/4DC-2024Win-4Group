@@ -12,7 +12,7 @@ public class BackScroll : MonoBehaviour
         float t = 0f;
         while(t < time)
         {
-            speed = new Vector2(0, t / 4f);
+            speed = new Vector2(0, t / 8f);
             t += Time.deltaTime;
             await UniTask.Yield();
         }

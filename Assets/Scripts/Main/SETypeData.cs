@@ -87,5 +87,7 @@ namespace Mirin
         [InspectorName("空振り2")] EmptyClick2,
         [InspectorName("めくる")] Para,
         [InspectorName("開始ホイッスル")] Start,
+        [InspectorName("コインの音")] Coin,
+        [InspectorName("キラーン")] Kiran,
     }
 }
