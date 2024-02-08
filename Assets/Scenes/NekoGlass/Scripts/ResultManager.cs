@@ -35,7 +35,7 @@ public class ResultManager : MonoBehaviour
     void ScoreShow()
     {
         // score‚ÉÀÛ‚ÌƒXƒRƒA‚ğ“ü‚ê‚éˆ—
-        if (GameManager.Instance.score != null)
+        if (GameManager.Instance != null)
         {
             score = GameManager.Instance.Score;
         }
