@@ -7,42 +7,38 @@ using UnityEngine.SceneManagement;
 
 public class Story : MonoBehaviour
 {
+    //変数生成
+    public Fade fade1;
     public Text Maintext;
     public GameObject panel;
-    public GameObject Wpanel;
     public GameObject girlpanel;
     public GameObject InPanel;
-    public int t = 0;
-    public bool flg = true;
+    public int count = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine("Color_FadeIn");
     }
 
-    // Update is called once per frame
     void Update()
     {
         //左クリックを受け付ける
         if (Input.GetMouseButtonDown(0)){
             Debug.Log("クリックされたよ");
-            if(flg)
-            {
-                StartCoroutine("Color_FadeOut");
-                flg = false;
-            }
             Invoke("Text", 1.0f);
         }
     }
 
     public void Text()
     {
-        t++;
-        switch(t)
+        count++;
+        switch(count)
         {
+            case 1:
+                StartCoroutine("Color_FadeOut");
+            break;
             case 2:
-                Maintext.text = ("-◯月◯日AM5：00-");
+                Maintext.text = ("-◯月✕日AM6：00-");
             break; 
             case 3:
                 Maintext.text = ("ん～眠いなぁ");
@@ -51,13 +47,12 @@ public class Story : MonoBehaviour
                 Maintext.text = ("はぁ。大学だるいなぁ");
             break;
             case 5:
-                Maintext.text = ("");
-                Wpanel.SetActive(true);
-                panel.SetActive(false);
+                Maintext.text = ("布団から出たくないなぁ");
             break;
             case 6:
-                InPanel.SetActive(true);
-                StartCoroutine("Color_FadeIn");
+                Maintext.text = ("");
+                panel.SetActive(false);
+                fade1.fade();
             break;
             case 7:
                 SceneManager.LoadSceneAsync("MainScene");
@@ -66,7 +61,7 @@ public class Story : MonoBehaviour
         CancelInvoke();
     }
 
-     IEnumerator Color_FadeIn()
+    IEnumerator Color_FadeIn()
     {
         // 色を変えるゲームオブジェクトからImageコンポーネントを取得
         Image fade = GetComponent<Image>();
@@ -80,7 +75,7 @@ public class Story : MonoBehaviour
         }
 
         // フェードインにかかる時間（秒）★変更可
-        const float fade_time = 1.5f;
+        const float fade_time = 2.0f;
 
         // ループ回数（0はエラー）★変更可
         const int loop_count = 50;
@@ -109,6 +104,7 @@ public class Story : MonoBehaviour
         }
         CancelInvoke();
     }
+    
     IEnumerator Color_FadeOut()
     {
         // 画面をフェードインさせるコールチン
@@ -126,7 +122,7 @@ public class Story : MonoBehaviour
         }
 
         // フェードインにかかる時間（秒）★変更可
-        const float fade_time = 1.5f;
+        const float fade_time = 2.0f;
 
         // ループ回数（0はエラー）★変更可
         const int loop_count = 50;
@@ -153,13 +149,8 @@ public class Story : MonoBehaviour
 
             }
         }
-        girlpanel.SetActive(false);
         panel.SetActive(true);
+        girlpanel.SetActive(false);
         InPanel.SetActive(false);
-    }
-
-    public void Delay()
-    {
-
     }
 }
