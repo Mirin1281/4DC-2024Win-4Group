@@ -80,7 +80,7 @@ namespace Mirin
                         ball.OnClicked();
                     }
                 }
-                scoreManager.GetScore(hit2ds.Length * hit2ds.Length * 100);
+                scoreManager.GetScore(hit2ds.Length * hit2ds.Length * 50);
 
                 int rand = UnityEngine.Random.Range(1, 101);
                 if (isHit)

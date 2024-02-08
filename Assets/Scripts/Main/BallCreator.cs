@@ -87,27 +87,37 @@ namespace Mirin
                 var s = t / 8f + 1f;
                 var type = Random.Range(1, 1001) switch
                 {
-                    <= 3 => BallSpriteType.Anpan,
+                    <= 2 => BallSpriteType.Anpan,
                     <= 6 => BallSpriteType.Money,
                     <= 15 => BallSpriteType.X,
                     <= 30 => BallSpriteType.R18,
                     <= 60 => BallSpriteType.Out1,
-                    <= 200 => BallSpriteType.Out2,
+                    <= 300 => BallSpriteType.Out2,
                     _ => BallSpriteType.Out3,
                 };
+                bool isRare = type == BallSpriteType.Anpan || type == BallSpriteType.Money;
                 var ball = ballPool.GetBall(type);
-                ball.SetSize(Random.Range(0.1f, 0.5f) * s);
                 ball.SetRotate(Random.Range(0f, 360f));
-                BallMoveInFever(ball, s, token).Forget();
+                BallMoveInFever(ball, s, isRare, token).Forget();
                 t += 0.03f;
                 await MyHelper.WaitSeconds(0.03f, token);
             }
         }
 
-        async UniTask BallMoveInFever(Ball ball, float time, CancellationToken token)
+        async UniTask BallMoveInFever(Ball ball, float time, bool isRare, CancellationToken token)
         {
             var randX = Random.Range(-7.5f, 7.5f);
-            var randSpeed = Random.Range(4f, 10f) * time * time;
+            var randSpeed = isRare ?
+                Random.Range(2f, 5f) :
+                Random.Range(4f, 10f) * time * time;
+            if(isRare)
+            {
+                ball.SetSize(Random.Range(0.2f, 0.6f));
+            }
+            else
+            {
+                ball.SetSize(Random.Range(0.1f, 0.5f) * time);
+            }
             var randRotate = Random.Range(-500f, 500f);
             var randMoveX = Random.Range(-0.5f, 0.5f) * time;
             float t = 0f;

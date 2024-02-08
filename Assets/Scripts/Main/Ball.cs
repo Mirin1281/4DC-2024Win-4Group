@@ -17,6 +17,7 @@ namespace Mirin
         {
             var p = Instantiate(particle);
             p.transform.localPosition = transform.localPosition;
+            p.transform.localScale = transform.localScale * 5f;
             p.PlayPaticle();
             scoreManager.GetScore(score);
             gameObject.SetActive(false);

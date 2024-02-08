@@ -22,10 +22,10 @@ namespace Mirin
                 BallSpriteType.Out1 => 20,
                 BallSpriteType.Out2 => 200,
                 BallSpriteType.Out3 => 1000,
-                BallSpriteType.Anpan => 3000,
+                BallSpriteType.Anpan => 10000,
                 BallSpriteType.R18 => 1800,
                 BallSpriteType.X => 1000,
-                BallSpriteType.Money => 3000,
+                BallSpriteType.Money => 10000,
                 _ => throw new System.Exception()
             };
             ball.SetScore(score);
