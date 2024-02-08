@@ -15,8 +15,10 @@ namespace Mirin
             gameObject.SetActive(true);
             readyImage.gameObject.SetActive(true);
             goImage.gameObject.SetActive(false);
+            SEManager.Instance.PlaySE(SEType.Ready);
 
             await readyImage.transform.DOScale(0.6f, 0.8f).SetEase(Ease.InQuad);
+            await MyHelper.WaitSeconds(0.3f, default);
 
             readyImage.gameObject.SetActive(false);
             goImage.gameObject.SetActive(true);

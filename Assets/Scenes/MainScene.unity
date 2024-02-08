@@ -459,7 +459,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535.4, y: 50}
+  m_AnchoredPosition: {x: -561.55, y: 50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496745746
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "2. \u30DF\u30B9\u3089\u305A\u7D9A\u3051\u308B\u3068\u30B3\u30F3\u30DC\u304C\u6E9C\u307E\u3063\u3066\u3001\n\u3000
+  m_text: "2. \u7A7A\u632F\u308A\u305B\u305A\u306B\u7D9A\u3051\u308B\u3068\u30B3\u30F3\u30DC\u304C\u305F\u307E\u3063\u3066\u3001\n\u3000
     \u30D5\u30A3\u30FC\u30D0\u30FC\u30BF\u30A4\u30E0\u306B\u7A81\u5165\u3067\u304D\u307E\u3059"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf816626317675643804a55cb3501c1f, type: 2}
@@ -971,7 +971,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535.4, y: -200}
+  m_AnchoredPosition: {x: -561.55, y: -200}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870147858
@@ -994,7 +994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "3. \u30EC\u30A2\u306A\u7389\u306F\u9AD8\u5F97\u70B9\u3067\u3059"
+  m_text: "3. \u7A2E\u985E\u3054\u3068\u306B\u5165\u308B\u30B9\u30B3\u30A2\u304C\u9055\u3044\u307E\u3059"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf816626317675643804a55cb3501c1f, type: 2}
   m_sharedMaterial: {fileID: 8059212495392588148, guid: bf816626317675643804a55cb3501c1f, type: 2}
@@ -2379,7 +2379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -535.4, y: 300}
+  m_AnchoredPosition: {x: -561.55, y: 300}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583871485
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30AF\u30EA\u30C3\u30AF\u3067\u59CB\u3081\u308B"
+  m_text: "\uFF1E\u30AF\u30EA\u30C3\u30AF\u3067\u59CB\u3081\u308B\uFF1C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bf816626317675643804a55cb3501c1f, type: 2}
   m_sharedMaterial: {fileID: 8059212495392588148, guid: bf816626317675643804a55cb3501c1f, type: 2}

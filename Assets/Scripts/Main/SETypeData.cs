@@ -90,5 +90,6 @@ namespace Mirin
         [InspectorName("コインの音")] Coin,
         [InspectorName("キラーン")] Kiran,
         [InspectorName("ピー音")] Piiiii,
+        [InspectorName("準備")] Ready,
     }
 }

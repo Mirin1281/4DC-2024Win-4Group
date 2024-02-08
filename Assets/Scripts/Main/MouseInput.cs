@@ -68,7 +68,7 @@ namespace Mirin
                 OnClicked?.Invoke(clickCount);
 
                 Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction);
+                RaycastHit2D[] hit2ds = Physics2D.RaycastAll(ray.origin, ray.direction, 12f);
 
                 bool isHit = false;
                 foreach (var hit2d in hit2ds)
