@@ -42,7 +42,7 @@ namespace Mirin
             var token = this.GetCancellationTokenOnDestroy();
             while (IsLoop)
             {
-                var randSize = Random.Range(0.1f, 0.5f);
+                var randSize = Random.Range(0.3f, 0.6f);
                 var randTypeNum = Random.Range(1, 101);
                 var randRotate = Random.Range(0f, 360f);
                 var type = randTypeNum switch
@@ -64,7 +64,7 @@ namespace Mirin
         async UniTask BallMove(Ball ball, CancellationToken token)
         {
             var randX = Random.Range(-7.5f, 7.5f);
-            var randSpeed = Random.Range(2f, 6f);
+            var randSpeed = Random.Range(3f, 8f);
             var randRotate = Random.Range(-500f, 500f);
             var randMoveX = Random.Range(-0.5f, 0.5f);
             float t = 0f;
@@ -108,7 +108,7 @@ namespace Mirin
         {
             var randX = Random.Range(-7.5f, 7.5f);
             var randSpeed = isRare ?
-                Random.Range(2f, 5f) :
+                Random.Range(2f, 4f) :
                 Random.Range(4f, 10f) * time * time;
             if(isRare)
             {

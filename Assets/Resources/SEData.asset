@@ -49,7 +49,7 @@ MonoBehaviour:
     volumeRate: 0.2
   - type: 11
     se: {fileID: 8300000, guid: 0874b92e2e8928943b0049b3f0079175, type: 3}
-    volumeRate: 1
+    volumeRate: 0.3
   - type: 12
     se: {fileID: 8300000, guid: 7155bf44e06cbcf4382d5948ef390e09, type: 3}
     volumeRate: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
     volumeRate: 1
   - type: 16
     se: {fileID: 8300000, guid: fe5af2d8e52f8ba4b88fe55c4f41708b, type: 3}
-    volumeRate: 3
+    volumeRate: 2
   - type: 17
     se: {fileID: 8300000, guid: 1591a77afb120294baeaa9bf6da3d44c, type: 3}
     volumeRate: 0.1
