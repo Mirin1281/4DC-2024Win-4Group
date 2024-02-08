@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Story : MonoBehaviour
 {
@@ -59,6 +60,7 @@ public class Story : MonoBehaviour
                 StartCoroutine("Color_FadeIn");
             break;
             case 7:
+                SceneManager.LoadSceneAsync("MainScene");
             break;
         }
         CancelInvoke();

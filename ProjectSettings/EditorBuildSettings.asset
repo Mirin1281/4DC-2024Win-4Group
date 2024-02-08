@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: a23c6ba7861cb4e4ba8bba66e324dcb2
+  - enabled: 1
+    path: Assets/gamu/StoryScenes.unity
+    guid: 1d1bb72c33711ac41ab622cdd9baf661
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: dedddde6d64d9a94baa881fc1849ce41
+  - enabled: 1
+    path: Assets/Scenes/NekoGlass/Result.unity
+    guid: 67fd603239571794398c77fe149a264a
   m_configObjects: {}
