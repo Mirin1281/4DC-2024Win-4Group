@@ -3420,6 +3420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c163ed84ca953644eb1168706b5815d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 168df6bcbaf9c664888b062d665bdcdc, type: 3}
   tutorialCanvas: {fileID: 1051734558}
   readyCanvas: {fileID: 1010098989}
   finishCanvas: {fileID: 1589890806}

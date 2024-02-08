@@ -6,6 +6,7 @@ namespace Mirin
 {
     public class MainSceneManager : MonoBehaviour
     {
+        [SerializeField] Texture2D cursorTexture;
         [SerializeField] TutorialCanvas tutorialCanvas;
         [SerializeField] ReadyCanvas readyCanvas;
         [SerializeField] Canvas finishCanvas;
@@ -16,7 +17,8 @@ namespace Mirin
 
         async UniTask Start()
         {
-            if(GameManager.Instance.IsFirstWatchTutorial)
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+            if (GameManager.Instance.IsFirstWatchTutorial)
             {
                 await tutorialCanvas.ShowTutorial();
                 GameManager.Instance.IsFirstWatchTutorial = false;
@@ -36,7 +38,8 @@ namespace Mirin
             mouseInput.IsLoop = false;
             GameManager.Instance.Score = scoreManager.Score;
             await MyHelper.WaitSeconds(2f, default);
-            FadeLoadSceneManager.Instance.LoadScene(0.5f, "Result");
+            await FadeLoadSceneManager.Instance.LoadSceneAsync(0.5f, "Result");
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 }

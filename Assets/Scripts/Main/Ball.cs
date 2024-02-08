@@ -20,7 +20,9 @@ namespace Mirin
             p.PlayPaticle();
             scoreManager.GetScore(score);
             gameObject.SetActive(false);
-            if(type == BallSpriteType.Yellow1 || type == BallSpriteType.Anpan)
+            if(type == BallSpriteType.Yellow1 ||
+                type == BallSpriteType.Anpan ||
+                type == BallSpriteType.Money)
             {
                 SEManager.Instance.PlaySE(SEType.Kiran);
             }

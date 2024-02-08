@@ -33,5 +33,6 @@ namespace Mirin
         [InspectorName("エンペンメン")] Anpan,
         [InspectorName("R18")] R18,
         [InspectorName("旧ツイッター")] X,
+        [InspectorName("お金")] Money,
     }
 }

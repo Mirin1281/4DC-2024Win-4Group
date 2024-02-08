@@ -49,7 +49,7 @@ namespace Mirin
                 {
                     <= 2 => BallSpriteType.Yellow1,
                     <= 8 => BallSpriteType.Red1,
-                    <= 25 => BallSpriteType.Purple1,
+                    <= 20 => BallSpriteType.Purple1,
                     <= 50 => BallSpriteType.Blue1,
                     _ => BallSpriteType.YelGre1,
                 };
@@ -87,7 +87,8 @@ namespace Mirin
                 var s = t / 8f + 1f;
                 var type = Random.Range(1, 1001) switch
                 {
-                    <= 5 => BallSpriteType.Anpan,
+                    <= 3 => BallSpriteType.Anpan,
+                    <= 6 => BallSpriteType.Money,
                     <= 15 => BallSpriteType.X,
                     <= 30 => BallSpriteType.R18,
                     <= 60 => BallSpriteType.Out1,
