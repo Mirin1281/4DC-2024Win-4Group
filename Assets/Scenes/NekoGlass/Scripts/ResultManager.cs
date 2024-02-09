@@ -10,11 +10,39 @@ public class ResultManager : MonoBehaviour
     [SerializeField] private int score;                 // スコア格納用
     [SerializeField] private Text scoreText;
 
-    [SerializeField] private int[] border = { 500000, 800000 };
-    [SerializeField] private GameObject[] girlPanel;
-    [SerializeField] private GameObject[] fukidashi;
+    [SerializeField] private int[] border = { 500000, 800000 };     // ボーダー
+    [SerializeField] private GameObject[] girlPanel;                // 女の子の画像オブジェクト
+    [SerializeField] private GameObject[] fukidashi;                // ふきだしオブジェクト
 
     [SerializeField] private int countUpFrame = 90;     // 加算アニメーションにかける時間[f]
+
+    [SerializeField] private Color[] scoreTextColor = { 
+        new Color32(74, 176, 233, 255), 
+        new Color32(238, 215, 87, 255), 
+        new Color32(255, 136, 211, 255) 
+    };
+
+    private string[] commentLv0 = {
+        "起こしてって言ったじゃん！", 
+        "起こしてって言ったじゃん！",
+        "起こしてって言ったじゃん！",
+        "ゆ、夢オチなの！？" 
+    };
+
+    private string[] commentLv1 = {
+        "遅刻だ...", 
+        "あれ、もうこんな時間...", 
+        "もうちょっと寝かせて...",
+        "ん...まだ眠いよ...",
+    };
+
+    private string[] commentLv2 = {
+        "いい夢だったなぁ", 
+        "よく寝れた～！",
+        "この夢また見たいなぁ",
+        "なんか身体が軽いような...？",
+        "もう大学休んじゃお！"
+    };
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +54,12 @@ public class ResultManager : MonoBehaviour
     void Update()
     {
         // デバッグ用リロード (4日目にコメントアウト)
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        
     }
 
     void ScoreShow()
@@ -41,14 +71,58 @@ public class ResultManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("スコアを取得できませんでした");
+            Debug.LogWarning("スコアを取得できませんでした。仮スコアを使用します");
         }
 
         // セリフ反映
-        
+        // LV0
+        if (score < border[0])
+        {
+            ApplyFukidashiText(0, SelectFukidashiComment(0));
+        }
+        // LV1
+        else if (score < border[1])
+        {
+            ApplyFukidashiText(1, SelectFukidashiComment(1));
+        }
+        // LV2
+        else
+        {
+            ApplyFukidashiText(2, SelectFukidashiComment(2));
+        }
 
         // スコア加算演出
         StartCoroutine(CountUpScore());
+    }
+
+    string SelectFukidashiComment(int level)
+    {
+        string selectedComment = "コメント";
+
+        // 乱数初期化
+        Random.InitState(System.DateTime.Now.Millisecond);
+
+        // レベルごとにランダム表示
+        if (level == 0)
+        {
+            selectedComment = commentLv0[Random.Range(0, commentLv0.Length)];
+        }
+        else if (level == 1)
+        {
+            selectedComment = commentLv1[Random.Range(0, commentLv1.Length)];
+        }
+        else
+        {
+            selectedComment = commentLv2[Random.Range(0, commentLv2.Length)];
+        }
+
+        return selectedComment;
+    }
+    
+    void ApplyFukidashiText(int level, string comment)
+    {
+        Text myFukidashiText = fukidashi[level].GetComponentInChildren<Text>();
+        myFukidashiText.text = comment;
     }
 
     IEnumerator CountUpScore()
@@ -58,18 +132,41 @@ public class ResultManager : MonoBehaviour
         // 表示後1秒待つ
         yield return new WaitForSeconds(1);
 
-        float oneFrameScore = score / countUpFrame;
+        float oneFrameScore = (float)score / countUpFrame;
         float countUpScore = 0;
+        int floorScore = 0;
 
         for (int i = 0; i < countUpFrame; i++)
         {
             countUpScore += oneFrameScore;
-            scoreText.text = Mathf.FloorToInt(countUpScore).ToString();
+            floorScore = Mathf.FloorToInt(countUpScore);
+
+            scoreText.text = floorScore.ToString();
+            scoreText.color = JudgeTextColor(floorScore);
+
             yield return null;
         }
+
         scoreText.text = score.ToString();
+        scoreText.color = JudgeTextColor(score);
 
         StartCoroutine(ShowGirl());
+    }
+
+    Color JudgeTextColor(float countUpScore)
+    {
+        if (countUpScore < border[0])
+        {
+            return scoreTextColor[0]; 
+        }
+        else if (countUpScore < border[1])
+        {
+            return scoreTextColor[1];
+        }
+        else
+        {
+            return scoreTextColor[2];
+        }
     }
 
     IEnumerator ShowGirl()
