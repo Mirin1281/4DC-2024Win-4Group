@@ -28,7 +28,7 @@ namespace Mirin
             }
             await readyCanvas.ShowReady();
 
-            BGMManager.Instance.Play(BGMPath.FOURDC302, allowsDuplicate: true);
+            BGMManager.Instance.Play(BGMPath.AWARENESS_F, volumeRate: 0.5f, allowsDuplicate: true);
             ballCreator.IsLoop = true;
             timer.AddTime = true;
             mouseInput.IsLoop = true;
