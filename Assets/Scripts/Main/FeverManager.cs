@@ -35,7 +35,7 @@ namespace Mirin
 
         async UniTask Fever()
         {
-            BGMManager.Instance.Pause(BGMPath.FOURDC302);
+            BGMManager.Instance.Pause(BGMPath.AWARENESS_F);
             IsFeverMode = true;
             mouseInput.IsEnabled = false;
             timer.AddTime = false;
@@ -76,7 +76,7 @@ namespace Mirin
             mouseInput.ResetComboCount();
             IsFeverMode = false;
             BGMManager.Instance.Pause(BGMPath.CLUB_F);
-            BGMManager.Instance.UnPause(BGMPath.FOURDC302);
+            BGMManager.Instance.UnPause(BGMPath.AWARENESS_F);
         }
 
         async UniTask CreateBlackPlateAsync(float time)
