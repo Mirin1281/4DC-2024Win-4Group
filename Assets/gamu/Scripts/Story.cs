@@ -104,7 +104,7 @@ public class Story : MonoBehaviour
         }
         CancelInvoke();
     }
-    
+
     IEnumerator Color_FadeOut()
     {
         // 画面をフェードインさせるコールチン
