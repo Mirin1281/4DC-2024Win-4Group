@@ -8,6 +8,7 @@ public class Fade : MonoBehaviour
     public GameObject panel;
     public void fade()
     {
+        panel.SetActive(true);
         StartCoroutine("Color_FadeIn");
     }
 
