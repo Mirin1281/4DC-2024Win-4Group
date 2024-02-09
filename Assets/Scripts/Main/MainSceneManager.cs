@@ -39,6 +39,7 @@ namespace Mirin
             GameManager.Instance.Score = scoreManager.Score;
             await MyHelper.WaitSeconds(2f, default);
             await FadeLoadSceneManager.Instance.LoadSceneAsync(0.5f, "Result");
+            BGMManager.Instance.Stop();
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
